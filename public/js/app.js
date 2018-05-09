@@ -73,7 +73,7 @@
 //   });
 
 // When you click the delArticle button
-$("#delArticle").on("click", function () {
+$(".delArticle").on("click", function () {
     console.log("delArticle button clicked");
     // Run a POST request to delete
     $.ajax({
@@ -95,4 +95,72 @@ $("#scrape").on("click", function () {
     }).then(function(data){
         window.location.reload();
     })
+});
+
+$(".saveArticle").on("click", function() {
+    console.log("Article Saved");
+    // Run a POST request to saveArticle
+    $.ajax({
+        method: "PUT",
+        url: "/saveArticle/" + $(this).attr("data-id")
+    }).then(function(data){
+        // window.location.replace("/saved");
+        window.location.reload();
+
+        // window.location.reload();
+
+    })
+});
+
+$(".addNote").on("click", function () {
+    console.log("addNote button clicked");
+    // Run a Get request to Page
+    $.ajax({
+        method: "GET",
+        url: "/usercomments/" + $(this).attr("data-id")
+    }).then(function(data){
+        window.location.replace("/usercommentsform");
+    })
+});
+
+$("#userSubmit").on("click", function () {
+    console.log("submit button clicked");
+   var content = $("#message_id").val().trim()
+   console.log(content)
+
+    // Run a Get request to Page
+    // $.ajax({
+    //     method: "GET",
+    //     url: "/usercomments/" + $(this).attr("data-id")
+    // }).then(function(data){
+    //     window.location.replace("/usercommentsform");
+
+    // });
+});
+
+
+$("#sArticles").on("click", function () {
+    console.log("redirect");
+    window.location.replace("/saved");
+    // Run a Get request to Page
+    // $.ajax({
+    //     method: "GET",
+    //     url: "/saveArticle/" + $(this).attr("data-id")
+    // }).then(function(data){
+        
+    //     // window.location.reload();
+    // });
+});
+
+$("#home").on("click", function () {
+    console.log("redirect home");
+    window.location.replace("/");
+    // Run a Get request to Page
+    // $.ajax({
+    //     method: "GET",
+    //     url: "/saveArticle/" + $(this).attr("data-id")
+    // }).then(function(data){
+        
+    //     // window.location.reload();
+    // });
 });

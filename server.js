@@ -175,12 +175,86 @@ app.post("/delArticle/:id", function(req, res) {
   db.Article.findOneAndRemove({"_id": req.params.id})
   // db.movie.remove({review: req.params.id})
   .then(function(dbArticle) {
-    res.send("Artivle has been deleted");
+    res.send("Article has been deleted");
     })
     .catch(function(err) {
       // If an error occurred, send it to the client
       res.json(err);
     });
+});
+
+
+// app.put("/saveArticle/:id", function (req, res) {
+//   db.Article
+//   .findOneAndUpdate ({saved: true})
+//   .then(function(dbArticle) {
+//       res.render("saved", {data: dbArticle})
+//   })
+//   .catch(function(error) {
+//     res.json(error);
+//   });
+// });
+
+app.put("/saveArticle/:id", function(req, res) {
+  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  db.Article
+  .update({ _id: req.params.id }, {$set: {saved:true}})
+    .then(function(dbArticle) {
+      res.send("Article has been saved");
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
+app.get("/saved", function(req, res){
+  db.Article.find({
+    'saved' : true
+  })
+  .then(function(dbArticle) {
+    // If we were able to successfully find Articles, send them back to the client
+    console.log(dbArticle)
+    res.render("saved", {data: dbArticle})    })
+  .catch(function(err) {
+    // If an error occurred, send it to the client
+    res.json(err);
+  });
+});
+
+app.get("/usercomments/:id", function(req, res) {
+    
+  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  db.Article.findOne({ _id: req.params.id })
+    // ..and populate all of the notes associated with it
+    .populate("note")
+    .then(function(dbArticle) {
+      console.log("MADE IT HERE")
+      res.send("-----");
+
+      // res.render("/usercomments", {data: dbArticle})    
+      // If we were able to successfully find an Article with the given id, send it back to the client
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
+
+app.get("/usercommentsform", function(req, res){
+  db.Article.findOne({ _id: req.params.id })
+  // ..and populate all of the notes associated with it
+  .populate("note")
+  .then(function(dbArticle) {
+    // console.log("MADE IT HERE")
+    res.render("usercomments", {data: dbArticle})    
+    // If we were able to successfully find an Article with the given id, send it back to the client
+  })
+  .catch(function(err) {
+    // If an error occurred, send it to the client
+    res.json(err);
+  });
 });
 
 

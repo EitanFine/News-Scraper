@@ -1,98 +1,29 @@
+
+</body>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="en">
+	<meta charset="UTF-8">
 
 <head>
+
 	<title>News Scraper</title>
-	<script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	 crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
 	 crossorigin="anonymous"></script>
-	 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
 </head>
 
 <body>
-	{{!--
-	<p> Hello World......</p>
-	{{#each data}}
-	<h2>{{this.title}}</h2>
 
-	<strong>{{this.teaser}}</strong>
-
-	<p>{{this.link}}</p>
-
-	<h3 data-id='{{id}}'>{{headline}}</h3>
-	<a href={{link}}>Get Showtimes</a>
-	<br> {{summary}}
-	<br>
-	<button data-id='{{_id}}' id='savemovie'>Save Movie</button>
-
-	console.log({{_id}})
-	<br>
-	</div> --}}
-
-	<div class="jumbotron jumbotron-fluid">
-		<div class="container">
-			<h1 class="display-3"><span class="glyphicon glyphicon-search" style="font-size: 40px;"></span> All the News That's Fit to Scrape</h1>
-			<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-		 <button type="button" class="btn btn-warning" id="scrape">SCRAPE</button>
-
-				
-				
-		</div>
-	</div>
-	{{#each data}}
-	<div class="container">
-		<div class="card">
-			<h5 class="card-header">{{this.title}}</h5>
-			<div class="card-body">
-				<h5 class="card-title">Special title treatment{{this.date}}</h5>
-				<p class="card-text">{{this.teaser}}</p>
-				<h3 data-id='{{id}}'>{{headline}}</h3>
-				<a href={{this.link}} class="btn btn-primary">Read More</a>
-				<button type="button" class="btn btn-success" data-id='{{_id}}'>Save Article</button>
-				<button type="button" class="btn btn-danger" id="delArticle" data-id='{{_id}}'>Delete Article</button>
+			{{{ body }}}
 
 
-			</div>
-		</div>
-	</div>
-	{{/each}}
-	
-	
-	{{!-- <script>
-			$("button").on("click", function(){
-				console.log("Hello")
-			})
-});
-
-			$.ajax({
-				url: "/articles/" + ,
-				data: data,
-				success: success,
-				dataType: dataType
-			});
-		</script> --}}
-
-
-	{{!-- <script>
-    var clkButton = $('.btn-success');
-    clkButton.click(function(e){
-        const id = $(this).attr('data-id');
-		console.log(id)
-    $.ajax({
-        url: "/articles/"+ id,
-        method: "GET"
-    }).then(function(data){
-        window.location.reload();
-    })
-    }) --}}
-
-</script>
-<script src="/js/app.js"></script>
-
-</body >
-
-</html >
+</body>
